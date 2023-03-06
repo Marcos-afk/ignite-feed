@@ -1,5 +1,19 @@
 .header {
-  background-color: #333;
-  color: var(--white);
-  height: 80px;
+  display: flex;
+  background-color: var(--gray-800);
+  color: var(--gray-100);
+  justify-content: center;
+  padding: 1.25rem 0;
+  align-items: center;
+}
+
+.header img {
+  height: 2rem;
+  margin-right: 0.2rem;
+}
+
+.header strong {
+  font-weight: 700;
+  font-size: 1.56rem;
+  line-height: 160%;
 }
