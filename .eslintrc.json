@@ -1,0 +1,65 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb/hooks",
+    "airbnb-typescript",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "linebreak-style": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
+    "react-hooks/exhaustive-deps": "off",
+    "object-shorthand": "error",
+    "no-console": "error",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "error",
+    "spaced-comment": "error",
+    "quotes": ["error", "single"],
+    "no-duplicate-imports": "error",
+    "react/prop-types": "off",
+    "import/default": "off",
+    "import/no-named-as-default-member": "off",
+    "@typescript-eslint/no-shadow": "off"
+  }
+}
