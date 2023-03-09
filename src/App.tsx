@@ -1,6 +1,7 @@
 import { Header } from './components/Header';
 import styles from './app.module.scss';
 import { SideBar } from './components/SideBar';
+import { Post } from './components/Post';
 
 export const App = () => {
   return (
@@ -10,10 +11,8 @@ export const App = () => {
       <div className={styles.wrapper}>
         <SideBar />
         <main>
-          <h1>ReactJS Structure</h1>
-          <h1>ReactJS Structure</h1>
-          <h1>ReactJS Structure</h1>
-          <h1>ReactJS Structure</h1>
+          <Post />
+          <Post />
         </main>
       </div>
     </div>
