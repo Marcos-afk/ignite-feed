@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import IgniteSvg from '../assets/ignite.svg';
+import IgniteSvg from '../../assets/ignite.svg';
 
 export const Header = () => {
   return (
