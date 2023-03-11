@@ -1,9 +1,12 @@
 import { ThumbsUp, Trash } from '@phosphor-icons/react';
+import { useState } from 'react';
 import { Avatar } from '../Avatar';
 import { CommentProps } from './CommentProps';
 import styles from './styles.module.scss';
 
 export const Comment = ({ content, onRemove }: CommentProps) => {
+  const [likeCount, setLikeCount] = useState(0);
+
   return (
     <div className={styles.comment}>
       <Avatar src="https://avatars.githubusercontent.com/u/72817154?v=4" />
@@ -25,9 +28,9 @@ export const Comment = ({ content, onRemove }: CommentProps) => {
           <p>{content}</p>
         </div>
         <footer>
-          <button>
+          <button onClick={() => setLikeCount((like) => like + 1)}>
             <ThumbsUp size={20} />
-            Aplaudir <span>10</span>
+            Aplaudir <span>{likeCount}</span>
           </button>
         </footer>
       </div>

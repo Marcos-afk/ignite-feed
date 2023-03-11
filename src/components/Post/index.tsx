@@ -39,7 +39,7 @@ export const Post = ({ author, publishedAt, contents }: PostsProps) => {
   };
 
   const handleDeleteComment = (comment: string) => {
-    setComments(comments.filter((item) => item !== comment));
+    setComments((comments) => comments.filter((item) => item !== comment));
   };
 
   return (
