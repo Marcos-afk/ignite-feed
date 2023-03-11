@@ -14,3 +14,7 @@ export interface PostsProps {
   publishedAt: Date;
   contents: ContentProps[];
 }
+
+export interface FormPostProps {
+  comment: string;
+}

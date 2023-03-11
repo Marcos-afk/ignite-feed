@@ -1,15 +1,28 @@
 /* eslint-disable quotes */
 import { Avatar } from '../Avatar';
 import { Comment } from '../Comment';
-import { PostsProps } from './PostsProps';
+import { FormPostProps, PostsProps } from './PostsProps';
 import { format, formatDistanceToNow } from 'date-fns';
 import styles from './styles.module.scss';
 import { ptBR } from 'date-fns/locale';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormDefaultValues } from './DefaultValues';
+import { FormPostSchema } from './Schemas';
 
 export const Post = ({ author, publishedAt, contents }: PostsProps) => {
   const [comments, setComments] = useState<string[]>([]);
-  const [newComment, setNewComment] = useState('');
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm<FormPostProps>({
+    defaultValues: FormDefaultValues,
+    resolver: yupResolver(FormPostSchema),
+  });
 
   const publishedDateFormat = format(publishedAt, "d 'de' LLLL 'às' hh:mm'h' ", {
     locale: ptBR,
@@ -20,11 +33,9 @@ export const Post = ({ author, publishedAt, contents }: PostsProps) => {
     addSuffix: true,
   });
 
-  const handleCommentSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setComments([...comments, newComment]);
-    setNewComment('');
+  const handleCommentSubmit = ({ comment }: FormPostProps) => {
+    setComments([...comments, comment]);
+    reset(FormDefaultValues);
   };
 
   const handleDeleteComment = (comment: string) => {
@@ -78,17 +89,16 @@ export const Post = ({ author, publishedAt, contents }: PostsProps) => {
         })}
       </div>
 
-      <form onSubmit={handleCommentSubmit} className={styles.commentForm}>
+      <form onSubmit={handleSubmit(handleCommentSubmit)} className={styles.commentForm}>
         <strong>Deixe seu feedback</strong>
 
-        <textarea
-          placeholder="Escreva um comentário..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-        />
+        {errors.comment && <span className={styles.formMessageError}>{errors.comment.message}</span>}
+        <textarea placeholder="Escreva um comentário..." {...register('comment')} />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={!isValid}>
+            Publicar
+          </button>
         </footer>
       </form>
 
