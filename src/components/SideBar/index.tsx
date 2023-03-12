@@ -8,7 +8,7 @@ export const SideBar = () => {
     <aside className={styles.sidebar}>
       <img className={styles.cover} src={BackgroundImg} alt="background-img" />
       <div className={styles.profile}>
-        <Avatar src="https://avatars.githubusercontent.com/u/72817154?v=4" hashBorder />
+        <Avatar src="https://avatars.githubusercontent.com/u/72817154?v=4" hashBorder alt="avatar" />
         <strong>Marcos André</strong>
         <span>Web Developer</span>
       </div>

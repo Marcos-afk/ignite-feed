@@ -9,7 +9,7 @@ export const Comment = ({ content, onRemove }: CommentProps) => {
 
   return (
     <div className={styles.comment}>
-      <Avatar src="https://avatars.githubusercontent.com/u/72817154?v=4" />
+      <Avatar src="https://avatars.githubusercontent.com/u/72817154?v=4" alt="avatar" />
 
       <div className={styles.commentBox}>
         <div className={styles.commentContent}>

@@ -46,7 +46,7 @@ export const Post = ({ author, publishedAt, contents }: PostsProps) => {
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar src={author.avatarUrl} hashBorder />
+          <Avatar src={author.avatarUrl} hashBorder alt={author.name} />
           <div className={styles.authorInfo}>
             <strong>{author.name}</strong>
             <span>{author.role}</span>
